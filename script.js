@@ -1,6 +1,7 @@
 const container = document.getElementById("container");
 const buttonNewGrid = document.getElementById("newgrid");
-
+const colorpicker = document.getElementById("colorPicker")
+let currentColor = colorpicker.value
 
 
 function createGrid(size) {
@@ -32,13 +33,14 @@ buttonNewGrid.addEventListener("click", () => {
     createGrid(numero);
 });
 
+
+colorpicker.addEventListener("input", () => {
+    currentColor = colorpicker.value;
+});
 function addhovereffect(square) {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    square.addEventListener('mouseover', () =>
-        square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-    )
+    square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = currentColor;
+    });
 }
 
 createGrid(16);
